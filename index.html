@@ -509,6 +509,13 @@ function saveConfig(){
 
 loadSavedConfig();
 
+// Persist immediately on every edit — not just when a scan runs — so keys/watchlist
+// survive a refresh or closed tab even if "Run Scan" was never clicked.
+['keyId','secretKey','watchlist'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', saveConfig);
+});
+document.getElementById('feed').addEventListener('change', saveConfig);
+
 /* ============================================================
    CLOCK & UTILS
    ============================================================ */
