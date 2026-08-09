@@ -101,6 +101,9 @@ h1 span{color:var(--amber);}
 .config-grid.collapsed{
   display:none;
 }
+#hitsBody.collapsed{
+  display:none;
+}
 
 .field label{
   display:block;
@@ -359,12 +362,19 @@ footer{color:var(--text-dim);font-size:9px;text-align:center;margin-top:16px;pad
   </div>
 
   <div class="panel">
-    <div class="panel-title"><div class="panel-title-text">Fresh Entry Hits (`ENTRY ▲`)</div></div>
-    <div id="regimeBanner" style="display:none;font-size:11px;padding:6px 10px;border-radius:3px;margin-bottom:8px;"></div>
+    <div class="panel-title" id="toggleHitsBtn">
+      <div class="panel-title-text">
+        <span>Fresh Entry Hits (`ENTRY ▲`)</span>
+        <span id="hitsCollapseIcon" style="color:var(--amber);font-size:10px;margin-left:6px;">[+ Expand]</span>
+      </div>
+    </div>
+    <div id="hitsBody" class="collapsed">
+      <div id="regimeBanner" style="display:none;font-size:11px;padding:6px 10px;border-radius:3px;margin-bottom:8px;"></div>
 
-    <!-- HITS BADGES DISPLAY -->
-    <div class="hits-container" id="hitsList">
-      <div class="no-hits">No scan run yet. Click "Run Scan" to load entry hits or search a symbol manually below.</div>
+      <!-- HITS BADGES DISPLAY -->
+      <div class="hits-container" id="hitsList">
+        <div class="no-hits">No scan run yet. Click "Run Scan" to load entry hits or search a symbol manually below.</div>
+      </div>
     </div>
   </div>
 
@@ -472,6 +482,21 @@ document.getElementById('togglePanelBtn').addEventListener('click', ()=>{
     icon.textContent = '[+ Expand]';
   } else {
     grid.classList.remove('collapsed');
+    icon.textContent = '[– Collapse]';
+  }
+});
+
+/* Fresh Entry Hits table — collapsed by default, toggle to view */
+let hitsCollapsed = true;
+document.getElementById('toggleHitsBtn').addEventListener('click', ()=>{
+  hitsCollapsed = !hitsCollapsed;
+  const body = document.getElementById('hitsBody');
+  const icon = document.getElementById('hitsCollapseIcon');
+  if(hitsCollapsed){
+    body.classList.add('collapsed');
+    icon.textContent = '[+ Expand]';
+  } else {
+    body.classList.remove('collapsed');
     icon.textContent = '[– Collapse]';
   }
 });
@@ -860,6 +885,9 @@ function riskYToPrice(geom, y){
 
 function renderRiskPanel(){
   const riskEl = document.getElementById('riskPanel');
+  // Entry/Stop/Target strip above the charts is hidden — charts only.
+  riskEl.style.display = 'none';
+  return;
   const risk = state.currentRisk;
   if(!risk){
     riskEl.style.display = 'none';
