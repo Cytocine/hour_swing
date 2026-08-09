@@ -2,7 +2,7 @@
   "name": "TrendCross // Fresh Confluence Scanner",
   "short_name": "TrendCross",
   "description": "1H + 1D confluence scanner with EMA cloud, PVT/RSI/ADX/ATR filters, and chart replay.",
-  "start_url": "./scanner_mobile.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
