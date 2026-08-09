@@ -1,0 +1,31 @@
+{
+  "name": "TrendCross // Fresh Confluence Scanner",
+  "short_name": "TrendCross",
+  "description": "1H + 1D confluence scanner with EMA cloud, PVT/RSI/ADX/ATR filters, and chart replay.",
+  "start_url": "./scanner_mobile.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0c0f",
+  "theme_color": "#0a0c0f",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
